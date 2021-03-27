@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Cell from "./cell.js"
 
 class Row extends Component<any> {
 
@@ -8,7 +7,15 @@ class Row extends Component<any> {
         const test : Array<any> = new Array<any>();
 
         for(var i :number = 0; i < this.props.width; i++) {
-                test[i] = (<span className="pixel x{i}, y{this.props.value}" ></span>)
+
+                let hasfood : string = "";
+
+                if(this.props.hasFood && this.props.food.x === i)
+                {
+                    hasfood = " food"
+                }
+
+                test[i] = (<span className={"pixel x"+i+ " y"+this.props.value + hasfood}></span>)
         }
 
         return(
