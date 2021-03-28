@@ -8,18 +8,22 @@ class Row extends Component<any> {
 
         for(var i :number = 0; i < this.props.width; i++) {
 
-                let hasfood : string = "";
+                let isFilled : string = "";
 
                 if(this.props.hasFood && this.props.food.x === i)
                 {
-                    hasfood = " food"
+                    isFilled = " food";
                 }
 
-                test[i] = (<span className={"pixel x"+i+ " y"+this.props.value + hasfood}></span>)
+                if(this.props.hasSnake && this.props.snake.isSnakeOnPixel(i)) {
+                    isFilled = " snake";
+                }
+
+                test[i] = (<span className={"pixel x"+i+ " y"+this.props.value + isFilled}></span>);
         }
 
         return(
-        <div className="row" key={this.props.value}>
+        <div className={"row " + this.props.value}>
             {test}
         </div>
         )
